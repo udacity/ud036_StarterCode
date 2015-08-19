@@ -83,6 +83,7 @@ main_page_head = '''
         });
     </script>
 </head>
+</html>
 '''
 
 
