@@ -22,11 +22,6 @@ main_page_head = '''
             margin-left: 2px;
             margin-right: 2px;
         }
-        #trailer .modal-dialog {
-            margin-top: 200px;
-            width: 640px;
-            height: 480px;
-        }
         .hanging-close {
             position: absolute;
             top: -12px;
@@ -99,6 +94,22 @@ main_page_head = '''
           });
           $('[data-toggle="popover"]').popover({ html : true });
         });
+        /**
+         * Vertically center Bootstrap 3 modals
+         * see -> https://gist.github.com/CrandellWS/8bcd88c6eca4a8260e16
+         */
+        $(function() {
+            function reposition() {
+                var modal = $(this),
+                    dialog = modal.find('.modal-dialog');
+                modal.css('display', 'block');
+                dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
+            }
+            $('.modal').on('show.bs.modal', reposition);
+            $(window).on('resize', function() {
+                $('.modal:visible').each(reposition);
+            });
+        });
     </script>
 </head>
 '''
@@ -108,11 +119,11 @@ main_page_head = '''
 main_page_content = '''
   <body>
     <!-- Trailer Video Modal -->
-    <div class="modal" id="trailer">
-      <div class="modal-dialog">
+    <div class="modal " id="trailer">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
-            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+            <img src='data:image/x-png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAACXBIWXMAAAsTAAALEwEAmpwYAAABgElEQVQ4y72TPS9DYRiGr/dg5E+0/Q8MRBgkJho1iY+FjaHMIh2QMJgQCX/AgoVExEmbaGKxSHxUWqOxWqU4vQ3nnPZoNSae6bwn9/Xc7/PkfuHfSyHFZSuvvGzFFfpNbMtRsBzZTSEN14lrUPRnue61U8e8aFmPkhoQheRca0wxreuzKn/WgmKaUEaSwq7S8ohdrEvKQJpNKgCUWCEHlMgB7LlC4/bnDkvscQxAJ3OUSJADDDP0udqIyUArAENYYJjknTMgTRtPbl+mfDkMseY72PR4s1Rd+N4dIGW6fSBPh/+3whbn3vckg8HNFE17behqeSMCcIPTsH4XuPKPr6wGgDTb3sZqKhc49DxZ5Na7+wAA52zUXA7q1lokQRYwTNOP2OUEgC5maamu1QIwD6RgnywA4/QDhil6AbhwwZTJBKMRlvOmJY3qNJCkinYU06o+JClSn6aoVFKyIahHKkvSyE95japZjTR7EeEGCynp57Q5NK+kCiooqflfxH9SX7sUOLwGLpqpAAAAAElFTkSuQmCC' alt='Close' />
           </a>
           <div class="scale-media" id="trailer-video-container">
           </div>
