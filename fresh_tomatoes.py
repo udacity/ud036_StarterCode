@@ -12,13 +12,15 @@ main_page_head = '''
     <title>Fresh Tomatoes!</title>
 
     <!-- Bootstrap 3 -->
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
         body {
             padding-top: 80px;
+            margin-left: 2px;
+            margin-right: 2px;
         }
         #trailer .modal-dialog {
             margin-top: 200px;
@@ -35,14 +37,6 @@ main_page_head = '''
             width: 100%;
             height: 100%;
         }
-        .movie-tile {
-            margin-bottom: 20px;
-            padding-top: 20px;
-        }
-        .movie-tile:hover {
-            background-color: #EEE;
-            cursor: pointer;
-        }
         .scale-media {
             padding-bottom: 56.25%;
             position: relative;
@@ -55,6 +49,29 @@ main_page_head = '''
             left: 0;
             top: 0;
             background-color: white;
+        }
+        .thumbnail:hover {
+            background-color: #333;
+            cursor: pointer;
+        }
+        .thumbnail{
+            padding: 10px;
+        }
+        .popover-title{
+            font-weight: bold;
+            text-align: center;
+        }
+        /* centered columns styles see -> http://goo.gl/pv4oow */
+        .row-centered {
+            text-align:center;
+        }
+        .col-centered {
+            display:inline-block;
+            float:none;
+            /* reset the text-align */
+            text-align:left;
+            /* inline-block space fix */
+            margin-right:-15px;
         }
     </style>
     <script type="text/javascript" charset="utf-8">
@@ -80,6 +97,7 @@ main_page_head = '''
           $('.movie-tile').hide().first().show("fast", function showNext() {
             $(this).next("div").show("fast", showNext);
           });
+          $('[data-toggle="popover"]').popover({ html : true });
         });
     </script>
 </head>
@@ -113,7 +131,9 @@ main_page_content = '''
       </div>
     </div>
     <div class="container">
-      {movie_tiles}
+        <div class="row row-centered">
+          {movie_tiles}
+        </div>
     </div>
   </body>
 </html>
@@ -121,10 +141,11 @@ main_page_content = '''
 
 
 # A single movie entry html template
-movie_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <img src="{poster_image_url}" title="{storyline}" width="220" height="342">
-    <h2>{movie_title}</h2>
+movie_content = '''
+<div class="col-md-3 col-sm-4 col-xs-6 movie-tile col-centered" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+    <div class="thumbnail" data-toggle="popover" data-placement="top auto" data-trigger="hover" title="{movie_title}" data-content="<p>{storyline}</p>">
+        <img class="img-responsive" src="{poster_image_url}" alt="{movie_title}">
+    </div>
 </div>
 '''
 
@@ -142,7 +163,7 @@ def create_movie_tiles_content(movies):
                               else None)
 
         # Append the tile for the movie with its content filled in
-        content += movie_tile_content.format(
+        content += movie_content.format(
             movie_title=movie.title,
             storyline=movie.storyline,
             poster_image_url=movie.poster_image_url,
