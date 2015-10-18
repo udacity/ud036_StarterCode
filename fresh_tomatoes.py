@@ -68,6 +68,10 @@ main_page_head = '''
             /* inline-block space fix */
             margin-right:-15px;
         }
+        .movie-btn{
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
@@ -77,7 +81,7 @@ main_page_head = '''
             $("#trailer-video-container").empty();
         });
         // Start playing the video whenever the trailer modal is opened
-        $(document).on('click', '.movie-tile', function (event) {
+        $(document).on('click', '.movie-img', function (event) {
             var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
             var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
             $("#trailer-video-container").empty().append($("<iframe></iframe>", {
@@ -89,10 +93,22 @@ main_page_head = '''
         });
         // Animate in the movies when the page loads
         $(document).ready(function () {
+          var deferred = $.Deferred();
+          $(".movie-btn").hide();
+          var movie_tile_length = $('.movie-tile').length
+          i = 0;
           $('.movie-tile').hide().first().show("fast", function showNext() {
             $(this).next("div").show("fast", showNext);
+            i++;
+            if(i == movie_tile_length)
+                $(".movie-btn").show('slow');
+            console.log(i);
           });
-          $('[data-toggle="popover"]').popover({ html : true });
+              
+          //is_touch_device see -> http://stackoverflow.com/a/15691248/1815624
+          var is_touch_device = ("ontouchstart" in window) || window.DocumentTouch && document instanceof DocumentTouch;
+          $('[data-toggle="popover"]').popover({ html : true, trigger: is_touch_device ? "focus" : "hover focus"});
+          
         });
         /**
          * Vertically center Bootstrap 3 modals
@@ -153,9 +169,10 @@ main_page_content = '''
 
 # A single movie entry html template
 movie_content = '''
-<div class="col-md-3 col-sm-4 col-xs-6 movie-tile col-centered" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <div class="thumbnail" data-toggle="popover" data-placement="top auto" data-trigger="hover" title="{movie_title}" data-content="<p>{storyline}</p>">
-        <img class="img-responsive" src="{poster_image_url}" alt="{movie_title}">
+<div class="col-md-3 col-sm-4 col-xs-6 col-centered movie-tile">
+    <div class="thumbnail">
+        <img class="img-responsive movie-img" src="{poster_image_url}" alt="{movie_title}" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+        <button class="btn btn-sm btn-block movie-btn" data-toggle="popover" data-placement="top auto" title="{movie_title}" data-content="<p>{storyline}</p>">{movie_title}</button>
     </div>
 </div>
 '''
@@ -198,3 +215,7 @@ def open_movies_page(movies):
     # open the output file in the browser (in a new tab, if possible)
     url = os.path.abspath(output_file.name)
     webbrowser.open('file://' + url, new=2)
+
+
+
+
