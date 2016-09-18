@@ -36,8 +36,8 @@ main_page_head = '''
             height: 100%;
         }
         .movie-tile {
-            padding-top: 20px;
-            height: 460px;
+            margin-bottom: 20px;
+            height: 450px;
         }
         .movie-tile:hover {
             background-color: #EEE;
