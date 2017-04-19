@@ -9,9 +9,9 @@ Edit **entertainment_center.py**：
 
 ```
 toy_story = media.Movie("Toy Story",                                              // title
-						"A story of a boy and his toys that come to life",        // story line
-						"https://upload.wikimedia.com/200px-ToyStory4poster.jpg", // poster image URL
-						"https://youtu.be/Bj4gS1JQzjk" //trailer URL )            // trailer URL
+			"A story of a boy and his toys that come to life",        // story line
+			"https://upload.wikimedia.com/200px-ToyStory4poster.jpg", // poster image URL
+			"https://youtu.be/Bj4gS1JQzjk" //trailer URL )            // trailer URL
 ```
 * Store those Movie object in a list like the following example:
 ```
