@@ -4,9 +4,9 @@ This is a project to let user to create a Movie Trailer website.
 
 ## Guidelines
 
-Install [Python](https://www.python.org/)(if you don't have one)
+Install [Python](https://www.python.org/)(if you don't have one).
 
-Download or clone this repository 
+Download or clone this repository. 
 
 Edit **entertainment_center.py** with the editor you like：
 * Create your Movie object like the following example:
@@ -25,7 +25,7 @@ movies = [toy_story, avatar, warcraft]
 ```
 fresh_tomatoes.open_movies_page(movies)
 ```
-* Build entertainment_center.py with python
+* Build entertainment_center.py with python.
 
 ## License
 
