@@ -12,7 +12,11 @@ class Movie():
     """ this is a Movie class. Allow user to create instances of Movie.  """
     def __init__(self, movie_title, movie_storyline, poster_image, trailer_youtube):
         """
-         
+        Args:
+            param1(str): movie_title.
+            param2(str): movie_storyline.
+            param3(str): poster_image URL.
+            param4(str): movie_storyline URL.
         """
         self.title = movie_title
         self.storyline = movie_storyline
