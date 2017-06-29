@@ -8,7 +8,7 @@ Download the repo onto your desktop. There should be 3 different python files:
 - entertainment_center.py
 
 ### Fresh Tomatoes
-The fresh_tomatoes.py file takes in a list of your favorite movies and turns them into an HTML file, or a website. Take a look at the `def open_movies_page(movies)` at the bottom in particular as this function will really do the magic. You don't have to touch anythign inside this file. This is just to show you what's under the hood.
+The fresh_tomatoes.py file takes in a list of your favorite movies and turns them into an HTML file, or a website. Take a look at the `def open_movies_page(movies)` at the bottom in particular as this function will really do the magic. You don't have to touch anything inside this file. This is just to show you what's under the hood.
 
 ### The Movie Blueprint
 The media.py is a class generator of instances of your favorite movies. The `class Movie()` takes four parameters:
