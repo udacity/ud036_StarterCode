@@ -1,7 +1,7 @@
 import media
 import fresh_tomatoes
 
-# Create instances of movie. Max 79 characters for each line, except for links/URL.
+# Create instances of movie. Max 79 characters for each line.
 forrest_gump = media.Movie("Forrest Gump",
                            "While not intelligent, Forrest Gump has accidentally been present"
                            " at many historic moments, but his true love, Jenny Curran, eludes him.",
@@ -63,7 +63,6 @@ ex_machina = media.Movie("Ex Machina",
                          "https://goo.gl/vkB8MH",
                          "https://www.youtube.com/watch?v=EoQuVnKhxaM")
 
+# List all the movies inside array
 movies = [pulp_fiction, star_wars, akira, good_will_hunting, blade_runner, drive, mad_max, forrest_gump, ex_machina]
-#List all the movies inside an array
-fresh_tomatoes.open_movies_page(movies)
-#Pass movies as the argument to open_movies_page from fresh_tomatoes
+fresh_tomatoes.open_movies_page(movies) # Pass movies array into open_movies_page(movies)
