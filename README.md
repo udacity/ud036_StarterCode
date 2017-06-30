@@ -1,11 +1,7 @@
 # Movie Trailer Website
 Create a simple website that showcases all of your favorite movies along with a movie trailer.
 
-## How to
-Download the repo onto your desktop. There should be 3 different python files:
-- fresh_tomatoes.py
-- media.py
-- entertainment_center.py
+## What's Inside
 
 ### Fresh Tomatoes
 The fresh_tomatoes.py file takes in a list of your favorite movies and turns them into an HTML file, or a website. Take a look at the `def open_movies_page(movies)` at the bottom in particular as this function will really do the magic. You don't have to touch anything inside this file. This is just to show you what's under the hood.
@@ -16,23 +12,32 @@ The media.py is a class generator of instances of your favorite movies. The `cla
 Have these 4 information for each of your favorite movie ready to go. Again, you don't have to touch this file either, unless you want to change the parameters.
 
 ### Entertainment Center
-The entertainment_center.py is the python file that will store all of your favorite movies. You can include as many movies as you want. To create a new movie, just follow the format already done for you.
+The entertainment_center.py is the python file that will store all of your favorite movies. You can include as many movies as you want. This file will ultimately run your application.
+
+
+## How to Run It
+1. Download [Python](https://www.python.org/the) and the [Repo](https://github.com/robin-yoo/ud036_StarterCode) onto your desktop. There should be 3 different python files:
+  - fresh_tomatoes.py
+  - media.py
+  - entertainment_center.py
+
+2. Open the entertainment_center.py file. This will ultimately run the application.
+3. Create a new instance of each of your favorite movie (title, storyline, poster image url, youtube trailer url). To create a new movie, just follow the format already done for you.
 ```
-forrest_gump = media.Movie("Forrest Gump",
-                           "While not intelligent, Forrest Gump has accidentally been present"
-                           " at many historic moments, but his true love, Jenny Curran, eludes him.",
-                           "https://images-na.ssl-images-amazon.com/images/M/MV5BYThjM2MwZGMtMzg3Ny00NGRkLWE4M2EtYTBiNWMzOTY0YTI4XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_SY1000_CR0,0,757,1000_AL_.jpg",
-                           "https://www.youtube.com/watch?v=bLvqoHBptjg")
+forrest_gump = media.Movie(
+    "Forrest Gump",
+    "While not intelligent, Forrest Gump has accidentally been present"
+    " at many historic moments, but his true love, Jenny Curran, eludes him.",
+    "https://goo.gl/xHzL7o",
+    "https://www.youtube.com/watch?v=bLvqoHBptjg")
 ```
-Once you have all your movies, store them inside the movie array just like the one done for you in the bottom.
+4. Once you have all your movies, store them inside the movie array just like the one done for you in the bottom of the file.
 ```
-movies = [forrest_gump, star_wars, blade_runner]
+movies = [forrest_gump, star_wars,
+blade_runner]
 ```
-The next line of code,
-```
-fresh_tomatoes.open_movies_page(movies)
-```
-will take in your list of movies and generate an HTML page of your movie trailer website. Run this file and watch your website come to life! :+1:
+5. Save the file and run the application to see your website come to life. 🎉
+
 
 ## Special Thanks
 Thank you to Udacity for teaching this program and providing fresh_tomatoes.py file to magically create our movie trailer website.
@@ -59,10 +64,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
-
-
-
-
-
