@@ -8,5 +8,6 @@ class movie():
         self.poster_image_url = poster_image
         self.trailer_youtube_url = trailer_youtube
 
+    #this method opens up the trailer for the movie instance in your default web browser
     def show_trailer(self):
         webbrowser.open(self.trailer_youtube_url)
