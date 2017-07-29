@@ -2,7 +2,7 @@
 
 **Movie Trailer Website** is a project that has been written for **Udacity's Full Stack Developer Nanodegree Program**.
 
-In this project, the webpage will display six of my favorite movies that I have selected. When the image of the movie is clicked, the corresponding movie trailer shall display via youtube.
+In this project, the webpage will display three of my favorite movies that I have selected. When the image of the movie is clicked, the corresponding movie trailer shall display via youtube.
 
 ## Requirments
 
