@@ -14,5 +14,5 @@ batman = media.Movie("The Dark Knight",
                      "https://www.youtube.com/watch?v=_PZpmTj1Q8Q")
 
 
-movies = [terminator_2, inception, hunger_games, batman]
+movies = [terminator_2, inception, batman]
 fresh_tomatoes.open_movies_page(movies)
