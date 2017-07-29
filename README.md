@@ -16,15 +16,22 @@ To obtain a copy of this project download the entire contents of this repository
 
 ## Usage
 
-**1) Open command prompt or terminal.**
+### First Runtime
+1) Open command prompt or terminal.
 
-**2) Navigate to the folder where the files are unzipped at.**
+2) Navigate to the folder where the files are unzipped at.
 
 `cd <insert path for location of the files>`
 
-**3) Open the project.**
+3) Compile and open the project.
 
 `python entertainment_center.py`
+
+### Not The First Runtime
+
+The project will have created `fresh_tomatoes.html` after the first runtime. You can skip the annoying steps and just open the webpage without recompliling it.
+
+**\*Note if you need to update the project, the project must be recompiled to display any changes.**
 
 ## Source
 
