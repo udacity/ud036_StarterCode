@@ -73,10 +73,10 @@ for movie in movies:
     youtube_key = json_video["results"][0]["key"]
     youtube_url = {"trailer_youtube_url":"https://www.youtube.com/watch?v="+ youtube_key}
     movie.update(youtube_url)
-    #print movie
+    print movie
 
 
-
+#fresh_tomatoes.open_movies_page(movies) 
 
 
     
