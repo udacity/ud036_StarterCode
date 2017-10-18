@@ -47,7 +47,7 @@ i = 0
 for i in range(0,len(json_informations["results"])):
     dictionary_movie= {"title": json_informations["results"][i]["title"],
                        "id" : json_informations["results"][i]["id"],
-                        "poster_image_url": json_informations["results"][i]["poster_path"]}
+                        "poster_image": "https://image.tmdb.org/t/p/w500" + json_informations["results"][i]["poster_path"]}
     movies.append(dictionary_movie)
     #print(movies[i])
     dictionary_movie ={}
@@ -71,12 +71,23 @@ for movie in movies:
 
     # Extract the youtube key and put the trailer_url into each movie's dictionary
     youtube_key = json_video["results"][0]["key"]
-    youtube_url = {"trailer_youtube_url":"https://www.youtube.com/watch?v="+ youtube_key}
+    youtube_url = {"trailer_youtube":"https://www.youtube.com/watch?v="+ youtube_key}
     movie.update(youtube_url)
-    print movie
+    #print movie["trailer_youtube"]
 
+# Instantiate Each movie
+readymovies = []
 
-#fresh_tomatoes.open_movies_page(movies) 
+for movie in movies:
+    movie["id"] = media.Movie( movie["title"], movie["poster_image"],
+                               movie["trailer_youtube"])
+    #print(movie["title"])
+    readymovies.append(movie["id"])
+    
+
+#print readymovies
+
+fresh_tomatoes.open_movies_page(readymovies) 
 
 
     
