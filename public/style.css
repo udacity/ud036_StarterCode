@@ -117,3 +117,7 @@ footer > a {
     top: 0;
     background-color: white;
 }
+
+#poster{
+  max-width: 200px;
+}
