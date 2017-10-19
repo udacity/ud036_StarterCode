@@ -14,7 +14,7 @@ $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function(even
 
 });
 
-function sendEmail(){
+function sendEmail() {
     window.open('mailto:contact@aviralgarg.com');
 }
 
