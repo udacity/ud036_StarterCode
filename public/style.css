@@ -11,8 +11,10 @@
 body {
   font-family: helvetica, arial, sans-serif;
   padding-top: 80px;
+  text-align: center;
 }
 
+/*
 h1 {
   font-weight: bold;
   color: pink;
@@ -80,7 +82,7 @@ footer > a {
 .nicejob {
   text-decoration: line-through;
 }
-
+*/
 #trailer .modal-dialog {
     margin-top: 200px;
     width: 640px;
@@ -99,6 +101,7 @@ footer > a {
 .movie-tile {
     margin-bottom: 20px;
     padding-top: 20px;
+  height: 500px;
 }
 .movie-tile:hover {
     background-color: #EEE;
@@ -118,6 +121,14 @@ footer > a {
     background-color: white;
 }
 
-#poster{
+.poster{
   max-width: 200px;
+}
+
+.clearFix {
+    overflow: auto;
+    zoom: 1;
+}
+#commentBtn{
+  margin-bottom: 50px;
 }

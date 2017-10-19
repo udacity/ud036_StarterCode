@@ -1,14 +1,22 @@
 var player;
+var selectedMovieName;
 
 // Pause the video when the modal is closed
 $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function(event) {
     // Remove the src so the player itself gets removed, as this is the only
     // reliable way to ensure the video stops playing in IE
     stopVideo();
-    $("#trailer-video-container").empty();
+    var iFrame = document.getElementById('trailer-video-container');
+    var trailerDiv = document.createElement("div");
+    trailerDiv.id = 'trailer-video-container';
+    iFrame.parentNode.replaceChild(trailerDiv, iFrame);
+
 
 });
 
+function sendEmail(){
+    window.open('mailto:contact@aviralgarg.com');
+}
 
 
 // 4. The API will call this function when the video player is ready.
@@ -29,17 +37,37 @@ function onPlayerStateChange(event) {
 }
 
 function stopVideo() {
-    console.log('clicked');
     player.stopVideo();
 }
 
-function showPlayer() {
+$(document).on('click', '.movie-tile', function(event) {
+    switch (event.target.nodeName) {
+        case 'DIV':
+            selectedMovieName = event.target.id;
+            break;
+        case 'IMG':
+            selectedMovieName = event.target.parentNode.id;
+            break;
+        case 'H2':
+            selectedMovieName = event.target.parentNode.id;
+            break;
+    }
+
+
+    $("#trailer-video-container").empty();
+    console.log(document.getElementById('trailer-video-container'));
+    showPlayer(selectedMovieName);
+
+});
+
+function showPlayer(movieName) {
     // 3. This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
+
     player = new YT.Player('trailer-video-container', {
         height: '390',
         width: '640',
-        videoId: 'Z5jvQwwHQNY',
+        videoId: movies[movieName].videoId,
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -53,10 +81,7 @@ function showPlayer() {
 
 function onYouTubePlayerAPIReady() {
     // Start playing the video whenever the trailer modal is opened
-    $(document).on('click', '.movie-tile', function(event) {
-        console.log(event);
-        showPlayer();
-    });
+    youtubePlayerReady = true;
 
 }
 
@@ -96,8 +121,11 @@ var movies = [];
  * @param name      - stores name of the movie
  * @param imgURL  - stores imgURL of the movie
  */
-function addMovie(name, imgURL) {
-    movies[name] = imgURL;
+function addMovie(name, imgURL, videoId) {
+    movies[name] = {
+        imgURL: imgURL,
+        videoId: videoId
+    };
 }
 
 /**
@@ -118,12 +146,12 @@ function stringToArray(str) {
  */
 function initializeMovieList(movieList) {
     var temp = stringToArray(movieList);
-
     temp[0].forEach(function(movie) {
-        var mName = movie;
-        var mImgURL = "../images/" + movie + ".png";
-
-        addMovie(mName, mImgURL);
+        console.log(movie);
+        var mName = movie.split('_')[0];
+        var mImgURL = "/images/movies/" + movie + ".png";
+        var mVideoId = movie.split('_')[1];
+        addMovie(mName, mImgURL, mVideoId);
     });
     return movies;
 }
@@ -237,12 +265,11 @@ function renderMovieList() {
             'data-target': "#trailer"
         });
         var mImage = createNewNode('img', {
-            'id': 'poster',
-            'class': 'img-rounded',
-            'src': imgDIR + movie + '.png'
+            'class': 'poster img-rounded',
+            'src': movies[movie].imgURL
         });
         var mH2 = createNewNode('h2', {
-            'innerHTML': movie
+            'innerHTML': movie,
         });
 
         mDiv.appendChild(mImage);
