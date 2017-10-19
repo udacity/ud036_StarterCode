@@ -6,7 +6,7 @@ var express = require('express');
 var app = express();
 const fs = require('fs');
 var movieArray = [];
-const movieImageFolder = __dirname + '/images/movies/';
+const movieImageFolder = __dirname + '/public/images/movies/';
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
