@@ -7,8 +7,9 @@ class Video(object):
 	def __init__(self, title, duration, genre, poster_image, youtube_trailer):
 		self.title = title
 		self.duration = duration
-		self.genre = poster_image
-		self.youtube_trailer = youtube_trailer
+		self.genre = genre
+		self.poster_image_url = poster_image
+		self.trailer_youtube_url = youtube_trailer
 
 #Child class inheriting Video
 class Movie(Video):
