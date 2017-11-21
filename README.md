@@ -3,7 +3,7 @@ Source code for a Movie Trailer website.
 # Prerequisite
 Install Python
 # Usage
-1. Save all the python files given under movies folder in same location.
+1. Save all the python files in same location.
 2. Open python IDLE
 3. Go to `File->Open` and choose _EntertainmentCenter.py_ file
 4. Press F5 to run the file
