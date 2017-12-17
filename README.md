@@ -4,7 +4,7 @@ This is a movie trailer website where you can see your **Favourite Movie Trailer
 
 ## Installation
 
-You just need to have _Python 2.7.14_ Installed and any _browser_ like **Crome/Safari** in your PC or Mac.
+You just need to have _Python 2.7.14_ Installed and any _browser_ like **Chrome/Safari/Firefox** in your PC or Mac.
 
 ## Usage
 
