@@ -12,6 +12,3 @@ class Movie(object):
         self.poster_image_url = movie_img
         self.trailer_youtube_url = youtube_url
 
-    def show_trailer(self):
-        """This method shows the tailer of the Movie"""
-        return webbrowser.open(self.trailer_youtube_url)
