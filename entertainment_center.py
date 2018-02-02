@@ -11,8 +11,8 @@ amelie = media.Movie(
     "https://www.youtube.com/watch?v=2UT5xaAfxWU"
     )
 
+# Tests during creation of instances
 # print(amelie.movie_title)
-
 # amelie.show_trailer()
 
 best_in_show = media.Movie(
@@ -55,7 +55,11 @@ unforgiven = media.Movie(
     "https://www.youtube.com/watch?v=XDAXGILEdro"
     )
 
+# create array with movies from above
 
 movies = [amelie, best_in_show, cuckoo, forrest_gump, twelve_angry_men, west_side_story, unforgiven]
+
+
+# give open_movies_pages function (in fresh_tomatoes file) the list of the above movies
 
 fresh_tomatoes.open_movies_page(movies)

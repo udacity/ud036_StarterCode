@@ -1,6 +1,9 @@
 import webbrowser
 
 
+# create Movie class with initial variables
+# define show_trailer function
+
 class Movie ():
     """docstring for Movie """
     def __init__(self, title, poster, trailer):
