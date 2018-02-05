@@ -8,7 +8,8 @@ import fresh_tomatoes
 amelie = media.Movie(
     "Amelie",
     "https://upload.wikimedia.org/wikipedia/en/5/53/Amelie_poster.jpg",
-    "https://www.youtube.com/watch?v=2UT5xaAfxWU"
+    "https://www.youtube.com/watch?v=2UT5xaAfxWU",
+    "foreign"
     )
 
 # Tests during creation of instances
@@ -18,41 +19,47 @@ amelie = media.Movie(
 best_in_show = media.Movie(
     "Best in Show",
     "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ5OTc0NDU1MF5BMl5BanBnXkFtZTYwNzk1OTI3._V1_.jpg",
-    "https://www.youtube.com/watch?v=yeifMjqpsg0"
+    "https://www.youtube.com/watch?v=yeifMjqpsg0",
+    "comedy"
     )
 
 cuckoo = media.Movie(
     "One Flew Over the Cuckoo's Nest",
     "https://images-na.ssl-images-amazon.com/images/M/MV5BZjA0OWVhOTAtYWQxNi00YzNhLWI4ZjYtNjFjZTEyYjJlNDVlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SY1000_CR0,0,672,1000_AL_.jpg",
-    "https://www.youtube.com/watch?v=oUobWmLF9WQ"
+    "https://www.youtube.com/watch?v=oUobWmLF9WQ",
+    "drama"
     )
 
 
 forrest_gump = media.Movie(
     "Forrest Gump",
     "https://images-na.ssl-images-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
-    "https://www.youtube.com/watch?v=2WSyJgydTsA"
+    "https://www.youtube.com/watch?v=2WSyJgydTsA",
+    "drama"
     )
 
 
 twelve_angry_men = media.Movie(
     "12 Angry Men",
     "https://images-na.ssl-images-amazon.com/images/M/MV5BMWU4N2FjNzYtNTVkNC00NzQ0LTg0MjAtYTJlMjFhNGUxZDFmXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SY1000_CR0,0,649,1000_AL_.jpg",
-    "https://www.youtube.com/watch?v=Dosg0p7LAB4"
+    "https://www.youtube.com/watch?v=Dosg0p7LAB4",
+    "drama"
     )
 
 
 west_side_story = media.Movie(
     "West Side Story",
     "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM0NDAxOTI5MF5BMl5BanBnXkFtZTcwNjI4Mjg3NA@@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
-    "https://www.youtube.com/watch?v=NF1L3NorO3E"
+    "https://www.youtube.com/watch?v=NF1L3NorO3E",
+    "musical"
     )
 
 
 unforgiven = media.Movie(
     "Unforgiven",
     "https://images-na.ssl-images-amazon.com/images/M/MV5BODM3YWY4NmQtN2Y3Ni00OTg0LWFhZGQtZWE3ZWY4MTJlOWU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
-    "https://www.youtube.com/watch?v=XDAXGILEdro"
+    "https://www.youtube.com/watch?v=XDAXGILEdro",
+    "western"
     )
 
 # create array with movies from above
