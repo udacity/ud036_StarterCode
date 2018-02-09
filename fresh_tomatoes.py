@@ -19,6 +19,17 @@ main_page_head = '''
     <style type="text/css" media="screen">
         body {
             padding-top: 80px;
+            background-color: black;
+            color: white;
+        }
+        .navbar-brand {
+            list-style: none;
+            display: flex;
+        }
+        .navbar-brand li {
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
         }
         #trailer .modal-dialog {
             margin-top: 200px;
@@ -40,7 +51,7 @@ main_page_head = '''
             padding-top: 20px;
         }
         .movie-tile:hover {
-            background-color: #EEE;
+            background-color: gray;
             cursor: pointer;
         }
         .scale-media {
@@ -108,6 +119,11 @@ main_page_content = '''
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+            <ul class="navbar-brand">
+                <li><a class="navbar-brand" href="#">My Favorites</a></li>
+                <li><a class="navbar-brand" href="#">Coming Soon</a></li>
+                <li><a class="navbar-brand" href="#">In Theaters</a></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -165,3 +181,4 @@ def open_movies_page(movies):
     # open the output file in the browser (in a new tab, if possible)
     url = os.path.abspath(output_file.name)
     webbrowser.open('file://' + url, new=2)
+
