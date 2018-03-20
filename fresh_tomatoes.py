@@ -19,6 +19,7 @@ main_page_head = '''
     <style type="text/css" media="screen">
         body {
             padding-top: 80px;
+			background: linear-gradient(#403B4A, #E7E9BB);
         }
         #trailer .modal-dialog {
             margin-top: 200px;
@@ -56,6 +57,109 @@ main_page_head = '''
             top: 0;
             background-color: white;
         }
+		.navbar-inverse{
+		background:#403B4A;
+		}
+		.word {
+  text-align:center;
+  background:transparent;
+  color:#D4AF37;
+  font-family:'Roboto';
+  font-weight:300;
+  font-size:32px;
+  padding-top:0px;;
+  height:12vh;
+  overflow:hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0,0,0);
+  top:0;
+}
+
+.word {
+  display:inline-block;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.word:first-of-type {    /* For increasing performance
+                       ID/Class should've been used.
+                       For a small demo
+                       it's okaish for now */
+  animation: showup 7s infinite;
+
+}
+
+.word:last-of-type {
+  width:0px;
+  animation: reveal 7s infinite;
+}
+
+.word:last-of-type span {
+  margin-left:-355px;
+  animation: slidein 7s infinite;
+}
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:355px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:355px;}
+}
+.container1 {
+  position: relative;
+}
+
+.image1 {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay1 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background: transparent;
+	}
+.container1:hover .overlay1 {
+  opacity: 1;
+}
+
+.text1 {
+  color: gold;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  background:linear-gradient(#6D6027, #D3CBB8);
+
+}
+
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
@@ -82,13 +186,16 @@ main_page_head = '''
           });
         });
     </script>
+
 </head>
 '''
 
 
 # The main page layout and title bar
 main_page_content = '''
+
   <body>
+
     <!-- Trailer Video Modal -->
     <div class="modal" id="trailer">
       <div class="modal-dialog">
@@ -107,14 +214,31 @@ main_page_content = '''
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+            <a class="navbar-brand" href="#">
+<div class="word">
+
+
+	<span>M</span>
+	<span>O</span>
+	<span>V</span>
+	<span>I</span>
+	<span>E</span>
+	<span>-</span>
+	<span>S</span>
+	<span>I</span>
+	<span>T</span>
+	<span>E</span>
+</div>
+
+</a>
+
           </div>
         </div>
       </div>
     </div>
+</div>
     <div class="container">
-      {movie_tiles}
-    </div>
+	  {movie_tiles}
   </body>
 </html>
 '''
@@ -123,8 +247,13 @@ main_page_content = '''
 # A single movie entry html template
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <img src="{poster_image_url}" width="220" height="342">
-    <h2>{movie_title}</h2>
+    <div class="container1">
+  <img src="{poster_image_url}" width="220" height="342" quality:40>
+  <div class="overlay1">
+    <div class="text1">Click for Trailer</div>
+  </div>
+</div>
+	<h2>{movie_title}</h2>
 </div>
 '''
 
@@ -165,3 +294,6 @@ def open_movies_page(movies):
     # open the output file in the browser (in a new tab, if possible)
     url = os.path.abspath(output_file.name)
     webbrowser.open('file://' + url, new=2)
+
+
+
