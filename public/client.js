@@ -1,6 +1,6 @@
 var player;
 var selectedMovieName;
-
+console.log("branch test for CI");
 // Pause the video when the modal is closed
 $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function(event) {
     // Remove the src so the player itself gets removed, as this is the only

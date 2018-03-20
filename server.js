@@ -19,6 +19,7 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+/*
 app.get("/dreams", function (request, response) {
   response.send(dreams);
 });
@@ -28,6 +29,8 @@ app.post("/dreams", function (request, response) {
   dreams.push(request.query.dream);
   response.sendStatus(200);
 });
+
+*/
 
 fs.readdir(movieImageFolder, function (err, files) {
     files.forEach(function (movie) {
@@ -45,14 +48,14 @@ app.get("/movieList", function (request, response) {
     console.log(movieArray);
 	response.send(movieArray);
 });
-
+/*
 // Simple in-memory store for now
 var dreams = [
   "Find and count some sheep",
   "Climb a really tall mountain",
   "Wash the dishes"
 ];
-
+*/
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
