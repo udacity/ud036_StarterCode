@@ -1,7 +1,7 @@
 import json
 import tmdbsimple as tmdb
 
-tmdb.API_KEY = 'bb55ad7fd47a1eb21f426a7636d528ca'
+tmdb.API_KEY = ''
 
 '''
     function that finds movie with the phrase
