@@ -40,6 +40,22 @@ function stopVideo() {
     player.stopVideo();
 }
 
+
+function showPlayer(movieName) {
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+console.log(typeof(movies[movieName].videoID));
+    player = new YT.Player('trailer-video-container', {
+        height: '390',
+        width: '640',
+        videoId: movies[movieName].videoID,
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
 $(document).on('click', '.movie-tile', function(event) {
     switch (event.target.nodeName) {
         case 'DIV':
@@ -55,25 +71,10 @@ $(document).on('click', '.movie-tile', function(event) {
 
 
     $("#trailer-video-container").empty();
-    console.log(document.getElementById('trailer-video-container'));
+    //console.log(document.getElementById('trailer-video-container'));
     showPlayer(selectedMovieName);
 
 });
-
-function showPlayer(movieName) {
-    // 3. This function creates an <iframe> (and YouTube player)
-    //    after the API code downloads.
-
-    player = new YT.Player('trailer-video-container', {
-        height: '390',
-        width: '640',
-        videoId: movies[movieName].videoId,
-        events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-        }
-    });
-}
 
 // Replace the 'ytplayer' element with an <iframe> and
 // YouTube player after the API code downloads.
@@ -96,11 +97,15 @@ $(document).ready(function() {
 
 const imgDIR = '/images/movies/';
 
-console.log('IMPORTANT: Please run the command "npm install" and ' +
-    'then "heroku local web" in the source directory');
 
-// GET request to get movie items from the server and call movieListController function
-httpGetAsync('/movieList', movieListController);
+
+// uncategorized test code
+// After the API loads, call a function to enable the search box.
+function handleAPILoaded() {  
+    // GET request to get movie items from the server and call movieListController function
+    httpGetAsync('/movieList', movieListController);
+
+}
 
 
 /*
@@ -121,11 +126,39 @@ var movies = [];
  * @param name      - stores name of the movie
  * @param imgURL  - stores imgURL of the movie
  */
-function addMovie(name, imgURL, videoId) {
+function addMovie(name, imgURL) {
     movies[name] = {
         imgURL: imgURL,
-        videoId: videoId
+        videoID: ""
     };
+
+}
+
+/**
+ * render movie list if recieved the videoID of all trailer videos
+ */
+function checkIfReceivedVideoIdForAll(){
+  var received = true;
+  
+    for (var movie in movies) {
+      if(movies[movie].videoID == ""){
+        received = false;
+      }
+    }
+  
+  if(received){
+     renderMovieList(); // view function
+  }
+}
+/**
+ * Push videoID for corresponding movies in the movies Array
+ * @param mName  - name of the movie 
+ * @param videoID - videoID of the youtube trailer video of the movie
+ */
+function addMovievideoID(mName, videoID){
+    console.log(mName + videoID);
+    movies[mName].videoID = videoID;
+    checkIfReceivedVideoIdForAll();
 }
 
 /**
@@ -140,9 +173,31 @@ function stringToArray(str) {
 }
 
 /**
+ * Gets the youtube videoID of the first video when searching for "[movie-name] trailer"
+ * @param movieName  - Movie name
+ */
+function getYouTubeVideoId(movieName){
+  
+  var videoID;
+  
+  // Search for a specified string.
+  var request = gapi.client.youtube.search.list({
+    q: movieName,
+    part: 'snippet'
+  });
+
+  request.execute(function(response) {
+    videoID = response.result.items[0].id.videoId; // id of the first search results
+    addMovievideoID(movieName, videoID);
+  });
+
+}
+  
+    
+
+/**
  * Sets movie list information in movies
  * @param movieList - Array of movies recieved from back-end in string form
- * @returns {Array} - List of movie in JavaScript Array form
  */
 function initializeMovieList(movieList) {
     var temp = stringToArray(movieList);
@@ -150,10 +205,11 @@ function initializeMovieList(movieList) {
         console.log(movie);
         var mName = movie.split('_')[0];
         var mImgURL = "/images/movies/" + movie + ".png";
-        var mVideoId = movie.split('_')[1];
-        addMovie(mName, mImgURL, mVideoId);
+        //var mVideoId = movie.split('_')[1]; earlier the youtubeVideoID was provide by server as second half of the filename
+        addMovie(mName, mImgURL);
+        getYouTubeVideoId(mName);
+        
     });
-    return movies;
 }
 
 /***********************************************************************************************************************
@@ -182,7 +238,6 @@ function httpGetAsync(theUrl, callback) {
  */
 function movieListController(movieList) {
     initializeMovieList(movieList); // model function
-    renderMovieList(); // view function
 }
 
 /***********************************************************************************************************************
