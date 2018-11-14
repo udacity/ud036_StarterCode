@@ -11,5 +11,5 @@ A website that displays my favorite movies.
 * hover and select poster image to view the movies trailer
 
 ## Resources
-* Movie poster images and descriptions were procured from [imdb] (www.imdb.com)
-* Movie trailers were procured from [youTube] (www.youtube.com)
+* Movie poster images and descriptions were procured from [imdb](www.imdb.com)
+* Movie trailers were procured from [youTube](www.youtube.com)
