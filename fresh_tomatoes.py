@@ -83,11 +83,14 @@ main_page_head = '''
         });
     </script>
 </head>
+</html>
 '''
 
 
 # The main page layout and title bar
 main_page_content = '''
+<!DOCTYPE html>
+<html lang="en">
   <body>
     <!-- Trailer Video Modal -->
     <div class="modal" id="trailer">
